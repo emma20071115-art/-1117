@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ed">
+  <meta name="description" content="探索苗栗 18 個鄉鎮市的山海風景、鐵道記憶與客庄日常。">
+  <title>慢遊苗栗 — 山海之間，遇見日常</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #24332c;
+      --muted: #707a70;
+      --green: #466b50;
+      --sage: #e9eee5;
+      --cream: #f7f5ed;
+      --orange: #d8835e;
+      --line: #e6e5db;
+      --white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", "Noto Sans TC", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 48px));
+      margin: auto;
+    }
+
+    header {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(36, 51, 44, 0.09);
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-mark {
+      width: 37px;
+      height: 37px;
+      border-radius: 50% 50% 45% 50%;
+      background: var(--green);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 19px;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+      font-size: 13px;
+      color: #5c675f;
+    }
+
+    nav a:hover {
+      color: var(--orange);
+    }
+
+    .nav-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1.06fr;
+      gap: 46px;
+      align-items: center;
+      padding: 60px 0 70px;
+      min-height: 530px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--orange);
+    }
+
+    h1 {
+      font-size: clamp(46px, 6vw, 76px);
+      line-height: 1.15;
+      letter-spacing: -0.045em;
+      margin: 21px 0 20px;
+      font-weight: 700;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--green);
+    }
+
+    .hero-copy {
+      font-size: 15px;
+      line-height: 2;
+      color: #6b756d;
+      max-width: 420px;
+      margin: 0 0 28px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      background: var(--green);
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 4px;
+      font-size: 13px;
+      transition: 0.2s;
+    }
+
+    .cta:hover {
+      background: #2f5239;
+      transform: translateY(-2px);
+    }
+
+    .cta span {
+      font-size: 18px;
+    }
+
+    .hero-image {
+      height: 390px;
+      border-radius: 46% 46% 5px 5px;
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(22, 38, 28, 0.02), rgba(22, 38, 28, 0.22)),
+        url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=85")
+        center 55% / cover;
+    }
+
+    .image-label {
+      position: absolute;
+      bottom: 20px;
+      left: 22px;
+      color: white;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-shadow: 0 1px 8px #333;
+    }
+
+    .hero-stamp {
+      position: absolute;
+      right: -21px;
+      top: 44px;
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      background: #e4a17a;
+      color: white;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.7;
+      transform: rotate(9deg);
+      box-shadow: 0 10px 30px #24332c20;
+    }
+
+    .strip {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 22px;
+      background: #efeee5;
+      border-radius: 4px;
+      margin-bottom: 92px;
+    }
+
+    .strip strong {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+    }
+
+    .strip p {
+      font-size: 12px;
+      color: #727a70;
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .strip-icon {
+      font-size: 24px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      font-size: 30px;
+      letter-spacing: -0.035em;
+      margin: 9px 0 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .filter {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: #69746b;
+      padding: 9px 15px;
+      border-radius: 30px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .filter:hover,
+    .filter.active {
+      background: var(--green);
+      border-color: var(--green);
+      color: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 5px;
+      overflow: hidden;
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 34px #23342614;
+    }
+
+    .card-photo {
+      height: 218px;
+      background-position: center;
+      background-size: cover;
+      position: relative;
+    }
+
+    .badge {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      background: #f8f6edeb;
+      padding: 7px 11px;
+      border-radius: 30px;
+      font-size: 10px;
+      color: #4a6250;
+    }
+
+    .card-body {
+      padding: 18px 19px 20px;
+    }
+
+    .card-meta {
+      font-size: 10px;
+      letter-spacing: 0.11em;
+      color: #9a8c78;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      margin: 8px 0;
+      font-weight: 700;
+    }
+
+    .card p {
+      font-size: 12px;
+      line-height: 1.9;
+      color: #747d75;
+      margin: 0;
+      min-height: 46px;
+    }
+
+    .card-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #efeee9;
+      margin-top: 15px;
+      padding-top: 13px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .card-foot a {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .card-foot a:hover {
+      color: var(--orange);
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      padding: 50px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .towns {
+      margin: 100px 0 86px;
+      background: #e9eee5;
+      padding: 44px 48px;
+      border-radius: 5px;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .towns h2 {
+      font-size: 28px;
+      margin: 10px 0;
+    }
+
+    .towns p {
+      font-size: 12px;
+      line-height: 1.9;
+      color: #69746b;
+      margin: 0;
+    }
+
+    .town-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .town {
+      background: #f9f8f1;
+      color: #526653;
+      font-size: 11px;
+      padding: 9px 13px;
+      border-radius: 3px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 27px 0 34px;
+      display: flex;
+      justify-content: space-between;
+      color: #7b827a;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    footer strong {
+      color: var(--ink);
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 46px 0;
+      }
+
+      .hero-image {
+        height: 340px;
+        order: -1;
+      }
+
+      .hero-stamp {
+        right: 10px;
+      }
+
+      .strip {
+        margin-bottom: 68px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .towns {
+        grid-template-columns: 1fr;
+        margin: 76px 0;
+      }
+
+      .nav-note {
+        display: none;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .wrap {
+        width: min(100% - 32px, 1160px);
+      }
+
+      header {
+        height: 68px;
+      }
+
+      nav {
+        gap: 16px;
+        font-size: 12px;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .brand-mark {
+        width: 32px;
+        height: 32px;
+      }
+
+      .hero {
+        padding: 30px 0 38px;
+      }
+
+      .hero-image {
+        height: 280px;
+      }
+
+      .hero-stamp {
+        width: 82px;
+        height: 82px;
+        font-size: 9px;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      .hero-copy {
+        font-size: 14px;
+      }
+
+      .section-head {
+        align-items: start;
+        gap: 15px;
+        flex-direction: column;
+      }
+
+      .section-head h2 {
+        font-size: 26px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .card-photo {
+        height: 230px;
+      }
+
+      .towns {
+        padding: 30px 24px;
+        margin: 64px 0;
+      }
+
+      .strip {
+        align-items: start;
+        padding: 16px;
+      }
+
+      .strip p {
+        font-size: 11px;
+      }
+
+      footer {
+        gap: 16px;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#" aria-label="慢遊苗栗首頁">
+        <span class="brand-mark">山</span>
+        <span>慢遊苗栗</span>
+      </a>
+      <nav>
+        <a href="#spots">找景點</a>
+        <a href="#towns">18 鄉鎮</a>
+      </nav>
+      <div class="nav-note">MIAOLI · TAIWAN</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">A SLOW JOURNEY IN MIAOLI</div>
+          <h1>山海之間，<br><em>遇見日常。</em></h1>
+          <p class="hero-copy">
+            走進苗栗，讓山線的鐵道、海線的風，和客庄巷弄裡的日常，
+            帶你找到旅行剛剛好的步調。
+          </p>
+          <a class="cta" href="#spots">開始探索景點 <span>↘</span></a>
+        </div>
+
+        <div class="hero-image" role="img" aria-label="山湖風景">
+          <div class="image-label">MOUNTAINS · RAILWAYS · HAKKA CULTURE</div>
+          <div class="hero-stamp">慢一點<br>風景就在<br>身邊</div>
+        </div>
+      </section>
+
+      <div class="strip">
+        <span class="strip-icon">✳</span>
+        <strong>苗栗，值得慢慢走</strong>
+        <p>從山城鐵道到海岸夕陽，挑一個鄉鎮出發，發現屬於自己的苗栗風景。</p>
+      </div>
+
+      <section id="spots">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">FIND YOUR NEXT STOP</div>
+            <h2>挑一處喜歡的風景</h2>
+          </div>
+          <p>依鄉鎮篩選，規劃你的苗栗小旅行</p>
+        </div>
+
+        <div class="filters" id="filters" aria-label="依鄉鎮篩選"></div>
+        <div class="grid" id="cards"></div>
+      </section>
+
+      <section class="towns" id="towns">
+        <div>
+          <div class="eyebrow">18 TOWNSHIPS</div>
+          <h2>苗栗的每個角落</h2>
+          <p>
+            苗栗縣由 2 市、5 鎮、11 鄉組成。山線、海線與客庄聚落各有不同風景，
+            從喜歡的地方開始認識。
+          </p>
+        </div>
+        <div class="town-list" id="town-list"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div><strong>慢遊苗栗</strong> · 山海之間，遇見日常。</div>
+      <div>景點資訊僅供旅遊靈感參考，出發前請查詢官方公告與交通資訊。</div>
+    </footer>
+  </div>
+
+  <script>
+    const towns = [
+      "全部景點",
+      "苗栗市",
+      "頭份市",
+      "竹南鎮",
+      "後龍鎮",
+      "通霄鎮",
+      "苑裡鎮",
+      "卓蘭鎮",
+      "造橋鄉",
+      "西湖鄉",
+      "頭屋鄉",
+      "公館鄉",
+      "銅鑼鄉",
+      "三義鄉",
+      "大湖鄉",
+      "獅潭鄉",
+      "三灣鄉",
+      "南庄鄉",
+      "泰安鄉"
+    ];
+
+    const spots = [
+      {
+        name: "勝興車站",
+        town: "三義鄉",
+        kind: "鐵道人文",
+        desc: "走進舊山線的山城聚落，在老車站與木造街屋之間，感受鐵道留下的時光。",
+        img: "photo-1473448912268-2022ce9509d8",
+        source: "https://www.trimt-nsa.gov.tw/zh-tw/attraction/"
+      },
+      {
+        name: "龍騰斷橋",
+        town: "三義鄉",
+        kind: "歷史地景",
+        desc: "紅磚橋墩隱身綠意山谷，是舊山線沿線令人難忘的歷史地景。",
+        img: "photo-1448375240586-882707db888b",
+        source: "https://www.taiwan.net.tw/m1.aspx?id=C100_342&sNo=0001110"
+      },
+      {
+        name: "南庄老街",
+        town: "南庄鄉",
+        kind: "客庄文化",
+        desc: "漫步桂花巷、洗衫坑與老郵局周邊，品味山城客庄的日常風景。",
+        img: "photo-1518005020951-eccb494ad742",
+        source: "https://cipa.miaoli.gov.tw/News_Content.aspx?n=2349&s=403281"
+      },
+      {
+        name: "泰安溫泉",
+        town: "泰安鄉",
+        kind: "山林療癒",
+        desc: "沿著山路走進溫泉聚落，在層層山景中安排一段放慢腳步的旅程。",
+        img: "photo-1470770841072-f978cf4d019e",
+        source: "https://www.trimt-nsa.gov.tw/zh-tw/tour/2385/"
+      },
+      {
+        name: "大湖草莓園",
+        town: "大湖鄉",
+        kind: "季節農遊",
+        desc: "走訪草莓故鄉，依季節體驗採果與農村風光，出發前可先確認園區開放資訊。",
+        img: "photo-1464226184884-fa280b87c399",
+        source: "https://miaolitravel.net/"
+      },
+      {
+        name: "後龍好望角",
+        town: "後龍鎮",
+        kind: "海線風景",
+        desc: "海風、草坡與遼闊海景相伴，適合停下來欣賞苗栗海岸線。",
+        img: "photo-1500375592092-40eb2168fd21",
+        source: "https://miaolitravel.net/"
+      },
+      {
+        name: "火炎山",
+        town: "三義鄉",
+        kind: "自然步道",
+        desc: "特殊的礫石地形與壯闊山勢，展現苗栗山線獨特的自然樣貌。",
+        img: "photo-1464822759023-fed622ff2c3b",
+        source: "https://www.trimt-nsa.gov.tw/"
+      },
+      {
+        name: "苑港漁港",
+        town: "苑裡鎮",
+        kind: "海線風景",
+        desc: "到海邊看看漁港與潮汐，在海線小鎮感受簡單的海岸日常。",
+        img: "photo-1500375592092-40eb2168fd21",
+        source: "https://miaolitravel.net/"
+      }
+    ];
+
+    const filters = document.querySelector("#filters");
+    const cards = document.querySelector("#cards");
+
+    function renderFilter(selected = "全部景點") {
+      filters.innerHTML = "";
+
+      towns.forEach((town) => {
+        const button = document.createElement("button");
+
+        button.className = "filter" + (town === selected ? " active" : "");
+        button.textContent = town;
+        button.onclick = () => {
+          renderFilter(town);
+          renderCards(town === "全部景點" ? null : town);
+        };
+
+        filters.append(button);
+      });
+    }
+
+    function renderCards(town = null) {
+      const list = town
+        ? spots.filter((spot) => spot.town === town)
+        : spots;
+
+      cards.innerHTML = "";
+
+      if (!list.length) {
+        cards.innerHTML =
+          '<div class="empty">這個鄉鎮的景點資料正在整理中，歡迎先探索其他地方。</div>';
+        return;
+      }
+
+      list.forEach((spot) => {
+        const article = document.createElement("article");
+        article.className = "card";
+
+        article.innerHTML = `
+          <div
+            class="card-photo"
+            style="background-image:
+              linear-gradient(0deg, #14251b20, #14251b00),
+              url(https://images.unsplash.com/${spot.img}?auto=format&fit=crop&w=900&q=80)"
+          >
+            <span class="badge">${spot.kind}</span>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">${spot.town} · MIAOLI</div>
+            <h3>${spot.name}</h3>
+            <p>${spot.desc}</p>
+            <div class="card-foot">
+              <span>景點介紹</span>
+              <a href="${spot.source}" target="_blank" rel="noopener">官方資訊 ↗</a>
+            </div>
+          </div>
+        `;
+
+        cards.append(article);
+      });
+    }
+
+    renderFilter();
+    renderCards();
+
+    document.querySelector("#town-list").innerHTML = towns
+      .slice(1)
+      .map((town) => `<span class="town">${town}</span>`)
+      .join("");
+  </script>
+</body>
+</html>
